@@ -1,9 +1,10 @@
 CXX ?= g++
 NAVIO = ../../Navio
-INCLUDES = -I ../..
+INCLUDES = -I ../../Navio
 
 all:
-	$(CXX) -std=gnu++11 $(INCLUDES) Servo.cpp $(NAVIO)/PWM.cpp $(NAVIO)/Util.cpp -o Servo
+	$(MAKE) -C ../../Navio all
+	$(CXX) -std=gnu++11 $(INCLUDES) Servo.cpp -L$(NAVIO) -lnavio -o Servo
 
 clean:
-	rm Servo
+	rm -f Servo
